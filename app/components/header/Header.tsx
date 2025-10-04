@@ -2,7 +2,7 @@ import Image from "next/image";
 import star from "../../assets/icons/star.svg";
 
 export const Header = () => {
-  const icon = <Image src={star} alt="star" />;
+  const icon = <Image src={star} alt="star" className="h-[12px] w-[13px]" />;
 
   return (
     <header className="xs:h-[85px] mb-[20px] flex h-[74px] flex-col items-center gap-0 bg-[var(--bg-header)] pt-[8px] pb-[54px] md:mb-[48px] md:h-[103px] md:pb-[64px]">
