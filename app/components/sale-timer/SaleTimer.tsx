@@ -1,14 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import star from "../../assets/icons/star.svg";
 import { useEffect, useState } from "react";
 import { cn } from "@/app/lib/utils";
 import { useAppDispatch } from "@/app/lib/hooks";
 import { setIsSale } from "@/app/services/plans/plansSlice";
 
 export const SaleTimer = () => {
-  const icon = <Image src={star} alt="star" className="h-[12px] w-[13px]" />;
+  const icon = (
+    <Image
+      src="icons/star.svg"
+      alt="star"
+      width={13}
+      height={13}
+    />
+  );
   const [timeLeft, setTimeLeft] = useState(3); // 2 минуты в секундах
   const [timer, setTimer] = useState("");
 
