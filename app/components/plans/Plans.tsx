@@ -1,75 +1,58 @@
-import { IPlan } from "@/app/interfaces";
-import { numberWithSpaces } from "@/app/lib/utils";
+"use client";
+
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "@/app/lib/hooks";
+import {
+  getIsSale,
+  getPlans,
+  getPlansLoading,
+} from "@/app/services/plans/plansSlice";
+import { findPlans } from "@/app/services/plans/actions";
 import { Attention } from "../attention/Attention";
 import { PrivacyPolicy } from "../privacy-policy/PrivacyPolicy";
 import { BuyButton } from "../controls";
 import { PlanBestCard, PlanCard } from "../plan-cards";
-
-const mock: IPlan[] = [
-  {
-    id: "f347d050-073c-4969-ae91-7346f935cf70",
-    period: "1 неделя",
-    price: 690,
-    full_price: 999,
-    sale: 30,
-    is_best: false,
-    text: "Чтобы просто начать",
-  },
-  {
-    id: "f347d050-073c-4969-ae91-7346f935cf71",
-    period: "1 месяц",
-    price: 990,
-    full_price: 1690,
-    sale: 40,
-    is_best: false,
-    text: "Чтобы получить первые результаты",
-  },
-  {
-    id: "f347d050-073c-4969-ae91-7346f935cf72",
-    period: "3 месяца",
-    price: 1990,
-    full_price: 3990,
-    sale: 50,
-    is_best: false,
-    text: "Привести тело в порядок",
-  },
-  {
-    id: "f347d050-073c-4969-ae91-7346f935cf73",
-    period: "Навсегда",
-    price: 5990,
-    full_price: 18990,
-    sale: 70,
-    is_best: true,
-    text: "Для тех, кто хочет всегда быть в форме и поддерживать здоровье",
-  },
-];
+import { IPlan } from "@/app/interfaces";
 
 export const Plans = () => {
-  const cardBest = mock
-    .map((card) => {
-      if (card.is_best) {
-        return (
-          <PlanBestCard
-            key={card.id}
-            period={card.period}
-            sale={card.sale}
-            price={card.price}
-            full_price={card.full_price}
-            text={card.text}
-          />
-        );
-      }
-    })
-    .reverse();
+  const dispatch = useAppDispatch();
+  const plans = useAppSelector(getPlans);
+  const plansLoading = useAppSelector(getPlansLoading);
+  const isSale = useAppSelector(getIsSale);
 
-  const cards = mock
+  const getSalePercent = (data: IPlan) => {
+    return Math.round((data.price / data.full_price) * 100);
+  };
+
+  useEffect(() => {
+    dispatch(findPlans());
+  }, [dispatch]);
+
+  const cardBest = plans.map((card) => {
+    if (card.is_best) {
+      return (
+        <PlanBestCard
+          key={card.id}
+          id={card.id}
+          period={card.period}
+          sale={isSale ? getSalePercent(card) : 0}
+          price={card.price}
+          full_price={card.full_price}
+          text={card.text}
+        />
+      );
+    }
+  });
+
+  const cards = plans
     .map((card) => {
       if (!card.is_best) {
         return (
           <PlanCard
             key={card.id}
+            id={card.id}
             period={card.period}
-            sale={card.sale}
+            sale={isSale ? getSalePercent(card) : 0}
             price={card.price}
             full_price={card.full_price}
             text={card.text}
@@ -79,10 +62,14 @@ export const Plans = () => {
     })
     .reverse();
 
-  console.log(numberWithSpaces(18990));
-
   return (
     <section className="xs:gap-[8px] xs:w-[343px] flex w-[288px] flex-col gap-[6px] md:w-[748px] md:gap-[14px]">
+      {plansLoading && (
+        <div className="flex w-full items-center justify-center">
+          Загрузка...
+        </div>
+      )}
+
       <section className="grid grid-cols-1 gap-[14px]">{cardBest}</section>
 
       <section className="xs:gap-[8px] grid grid-cols-1 gap-[6px] md:grid-cols-3 md:gap-[14px]">
