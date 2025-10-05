@@ -4,11 +4,15 @@ import Image from "next/image";
 import star from "../../assets/icons/star.svg";
 import { useEffect, useState } from "react";
 import { cn } from "@/app/lib/utils";
+import { useAppDispatch } from "@/app/lib/hooks";
+import { setIsSale } from "@/app/services/plans/plansSlice";
 
 export const SaleTimer = () => {
   const icon = <Image src={star} alt="star" className="h-[12px] w-[13px]" />;
-  const [timeLeft, setTimeLeft] = useState(120); // 2 минуты в секундах
+  const [timeLeft, setTimeLeft] = useState(3); // 2 минуты в секундах
   const [timer, setTimer] = useState("");
+
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const updateTimerDisplay = () => {
@@ -38,10 +42,14 @@ export const SaleTimer = () => {
       });
     }, 1000);
 
+    if (!timeLeft) {
+      dispatch(setIsSale(false));
+    }
+
     return () => {
       clearInterval(timerInterval); // Очистка таймера при размонтировании
     };
-  }, [timeLeft]);
+  }, [dispatch, timeLeft]);
 
   return (
     <div
