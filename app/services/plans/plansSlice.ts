@@ -6,22 +6,29 @@ type TInitialState = {
   loading: boolean;
   error?: string | null;
   items: IPlan[];
+  isSale: boolean;
 };
 
 const initialState: TInitialState = {
   loading: false,
   error: null,
   items: [],
+  isSale: true,
 };
 
 export const plansSlice = createSlice({
   name: "plans",
   initialState,
-  reducers: {},
+  reducers: {
+    setIsSale: (state, action) => {
+      state.isSale = action.payload;
+    },
+  },
   selectors: {
     getPlans: (state) => state.items,
     getPlansLoading: (state) => state.loading,
     getPlansError: (state) => state.error,
+    getIsSale: (state) => state.isSale,
   },
   extraReducers(builder) {
     builder
@@ -41,7 +48,7 @@ export const plansSlice = createSlice({
   },
 });
 
-export const {} = plansSlice.actions;
-export const { getPlans, getPlansLoading, getPlansError } =
+export const { setIsSale } = plansSlice.actions;
+export const { getPlans, getPlansLoading, getPlansError, getIsSale } =
   plansSlice.selectors;
 export default plansSlice;
