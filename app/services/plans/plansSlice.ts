@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { findPlans } from "./actions";
+import { sortPlans } from "@/app/lib/utils";
 import { IPlan } from "@/app/interfaces";
 
 type TInitialState = {
@@ -39,7 +40,7 @@ export const plansSlice = createSlice({
       .addCase(findPlans.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.items = action.payload;
+        state.items = sortPlans(action.payload, "desc");
       })
       .addCase(findPlans.rejected, (state, action) => {
         state.loading = false;
