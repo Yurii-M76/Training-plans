@@ -15,7 +15,7 @@ const raleway = Raleway({
 });
 
 export const metadata: Metadata = {
-  title: "Pricing plans",
+  title: "Training plans",
   description: "Test task",
 };
 
