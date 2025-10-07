@@ -1,9 +1,9 @@
 export interface IPlan {
-  id?: string;
+  id: string;
   period: string;
   price: number;
   full_price: number;
-  sale?: number;
+  text: string;
   is_best?: boolean;
-  text?: string;
+  sale?: string;
 }
