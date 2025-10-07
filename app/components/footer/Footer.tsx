@@ -1,6 +1,6 @@
 export const Footer = () => {
   return (
-    <footer className="flex flex-col gap-[10px] rounded-[20px] border-[1.5px] border-[var(--outline)] p-[12px_12px_10px] md:gap-[30px] md:rounded-[30px] md:p-[20px_20px_30px]">
+    <footer className="flex flex-col gap-[10px] rounded-[20px] border-[1.5px] border-[var(--outline)] p-[12px_12px_10px] md:gap-[30px] md:rounded-[30px] md:p-[20px]">
       <div className="xs:w-[294px] xs:h-[44px] flex h-[41px] w-full items-center justify-center rounded-[30px] border border-[var(--green)] md:h-[68px] md:w-[461px]">
         <p className="xs:text-[18px] text-[16px] leading-[1.2] font-medium text-[var(--green)] md:text-[28px]">
           гарантия возврата 30 дней
