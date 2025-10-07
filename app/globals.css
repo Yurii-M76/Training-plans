@@ -19,6 +19,7 @@
   --green: #81fe95;
   --content-box: 1216px;
   --outline: #484d4e;
+  --outline-hover: #5c6263;
 }
 
 @theme {
