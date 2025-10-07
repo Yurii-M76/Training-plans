@@ -1,11 +1,9 @@
 export const checkResponse = <T>(res: Response): Promise<T> =>
   res.ok ? res.json() : res.json().then((err) => Promise.reject(err));
 
-const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
 export const findPlansFromApi = async <T>(path: string): Promise<T> => {
   try {
-    const response = await fetch(`${apiUrl}/${path}`, {
+    const response = await fetch(`http://localhost:3000/api/${path}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
