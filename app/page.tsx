@@ -8,8 +8,8 @@ export default function Home() {
         <span className="text-[var(--accent)]">тариф</span>
       </h1>
 
-      <section className="flex w-full flex-col items-center md:flex-row md:items-center md:justify-between">
-        <div className="xs:h-[250px] xs:w-[124px] relative h-[200px] w-[99px] bg-[url(/images/man.png)] bg-contain bg-center bg-no-repeat md:h-[767px] md:w-[381px]">
+      <section className="flex h-full w-full flex-col items-center md:flex-row md:items-center md:justify-between">
+        <div className="xs:h-[248px] xs:w-[124px] relative h-[204px] w-[99px] bg-[url(/images/man.png)] bg-contain bg-center bg-no-repeat md:h-[767px] md:w-[381px]">
           <div className="absolute bottom-0 left-0 h-[80px] w-full bg-linear-to-t from-[var(--background)]" />
         </div>
 
