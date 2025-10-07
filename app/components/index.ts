@@ -5,7 +5,6 @@ export * from "./plan-cards";
 export * from "./price/Price";
 export * from "./sale/Sale";
 export * from "./attention/Attention";
-export * from "./privacy-policy/PrivacyPolicy";
 export * from "./controls";
 export * from "./sale-timer/SaleTimer";
-export * from "./checkbox/checkbox";
+export * from "./inputs";
