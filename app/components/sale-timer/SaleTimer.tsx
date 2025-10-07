@@ -15,7 +15,7 @@ export const SaleTimer = () => {
       height={13}
     />
   );
-  const [timeLeft, setTimeLeft] = useState(3); // 2 минуты в секундах
+  const [timeLeft, setTimeLeft] = useState(120); // 2 минуты в секундах
   const [timer, setTimer] = useState("");
 
   const dispatch = useAppDispatch();
