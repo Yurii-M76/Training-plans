@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Plan {
+  id          String      @id @default(uuid())
+  period      String
+  price       Int         @default(0)
+  full_price  Int         @default(0)
+  is_best     Boolean     @default(false)
+  text        String
+
+  @@map("plans")
+}
