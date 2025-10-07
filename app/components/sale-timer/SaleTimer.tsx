@@ -13,6 +13,7 @@ export const SaleTimer = () => {
       alt="star"
       width={13}
       height={13}
+      className="size-[13px]"
     />
   );
   const [timeLeft, setTimeLeft] = useState(120); // 2 минуты в секундах

@@ -6,8 +6,8 @@ export const Attention = () => {
       <Image
         src="icons/alert.svg"
         alt="alert"
-        width={24}
-        height={24}
+        width={22}
+        height={22}
         className="h-[24] w-[22] md:h-[26px] md:w-[24px]"
       />
       <p className="text-[12px] leading-[1.3] md:text-[16px]">
