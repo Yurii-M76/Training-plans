@@ -6,7 +6,6 @@ const API_URL =
   env === "development"
     ? "http://192.168.1.141:3000/api"
     : process.env.NEXT_PUBLIC_API_URL;
-console.log(API_URL);
 
 export const findPlansFromApi = async <T>(path: string): Promise<T> => {
   try {
