@@ -1,15 +1,13 @@
-## Getting Started
+# Training plans - pet-project
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Stack - Next, React, Redux Toolkit, TailwindCSS, Prisma, Postgres
+UI - figma design
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Vercel
+
+https://training-plans.vercel.app/
+
+### Screens
+
+![screen](screen.jpg)
