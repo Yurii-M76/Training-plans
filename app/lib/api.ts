@@ -3,7 +3,7 @@ export const checkResponse = <T>(res: Response): Promise<T> =>
 
 export const findPlansFromApi = async <T>(path: string): Promise<T> => {
   try {
-    const response = await fetch(`http://localhost:3000/api${path}`, {
+    const response = await fetch(`http://localhost/api${path}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
