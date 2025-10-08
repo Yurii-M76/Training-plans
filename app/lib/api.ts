@@ -3,12 +3,17 @@ export const checkResponse = <T>(res: Response): Promise<T> =>
 
 export const findPlansFromApi = async <T>(path: string): Promise<T> => {
   try {
-    const response = await fetch(`https://training-plans.vercel.app/api${path}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      } as HeadersInit,
-    });
+    const response = await fetch(
+      `https://training-plans.vercel.app/api${path}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+        } as HeadersInit,
+        mode: "cors",
+        credentials: "include",
+      },
+    );
     return await checkResponse<T>(response);
   } catch (error) {
     console.error(`Request failed (${path} find all):`, error);
